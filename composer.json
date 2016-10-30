@@ -1,0 +1,20 @@
+{
+    "name": "aecca/redforma",
+    "authors": [
+        {
+            "name": "Andy Ecca",
+            "email": "andy.ecca@gmail.com"
+        },
+        {
+            "name": "Juan Pablo CH",
+            "email": "juanpablocs21@gmail.com"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "Sp\\": "src/"
+        }
+    },
+    "require": {
+    }
+}

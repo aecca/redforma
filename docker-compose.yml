@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+    web:
+        image: nginx:latest
+        ports:
+           - "8080:80"
+        volumes:
+          - ./docker/conf/site.conf:/etc/nginx/conf.d/default.conf
+          - ./var/logs/ngnix:/var/log/nginx
+        volumes_from:
+          - php7
+        links:
+          - php7
+    php7:
+        build: ./docker/php/
+        volumes:
+          - .:/www
