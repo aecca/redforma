@@ -20,7 +20,8 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "node-sass": "^3.10.0"
   },
   "dependencies": {
     "jp-router": "^1.0.0",
