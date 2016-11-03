@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="{{ bodyClass|default('') }}">
+        <div class="wrapper">
+            <div class="ui vertical center aligned segment main-header">
+
+                <div class="ui container">
+                    <div class="ui large secondary menu">
+                        {% include '_partials/header-inner.html.twig' %}
+                    </div>
+                </div>
+
+            </div>
+            {% block body %}{% endblock %}
+
+        </div>
+        {% include '_partials/footer.html.twig' %}
+        <script type="text/javascript" src="/assets/vendor.min.js"></script>
+        <script type="text/javascript" src="/assets/app.min.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

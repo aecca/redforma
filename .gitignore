@@ -3,3 +3,6 @@ var/cache/*
 var/logs/*
 var/sessions/*
 .idea/
+web/assets/
+app/Resources/node_modules/
+app/Resources/npm-debug.log

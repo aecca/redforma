@@ -1,0 +1,57 @@
+/**
+ * connect.scss
+ * @author Juan Pablo <juanpablocs21@gmail.com>
+ */
+body.app-connect {
+    background: #498CD5;
+    background: -webkit-linear-gradient(#3578bf, #59A2F3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3578bf, #59A2F3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3578bf, #59A2F3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3578bf, #59A2F3); /* Standard syntax */
+}
+body.app-connect > .grid {
+  height: 100%;
+}
+.user-connect{
+    .column {
+      max-width: 450px;
+    }
+     .ui.header{
+        color:white;
+        margin-top:150px;
+    }
+    .ui.header > .icon + .content{
+        padding-left: 0.15rem;
+    }
+    .ui.transparent.message{
+        background: transparent!important;
+        color:white!important;
+        box-shadow:none!important;
+        a{
+            color:white!important;
+            font-weight: bold!important;
+            margin-left:4px;
+            text-decoration: underline!important;
+        }
+    }
+
+    h1{
+        font-size: 24px!important;
+        font-weight: 300!important;
+        margin:10px 0 30px 0!important;
+        color:#666!important;
+    }
+    .ui.lostpassword{
+        margin:10px 0!important;
+            a{
+            color:#888!important;
+            text-decoration: underline!important;
+        }
+    }
+
+    .ui.noborder.segment{
+        border:0!important;
+        box-shadow: none!important;
+        padding:2em!important;
+    }
+}
