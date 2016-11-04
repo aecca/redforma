@@ -4,9 +4,10 @@
   "description": "frontend redforma",
   "main": "src/app.js",
   "scripts": {
-    "build": "rm -rf ./../../web/assets/* && webpack -p",
-    "build.prod": "rm -rf ./../../web/assets/* && NODE_ENV=production webpack -p",
-    "start": "webpack-dev-server --hot"
+    "clean": "rm -rf ./../../web/assets/*",
+    "build": "npm run clean && webpack -p",
+    "build.prod": "npm run clean && NODE_ENV=production webpack -p",
+    "start": "npm run build && webpack-dev-server --hot"
   },
   "keywords": [],
   "author": "juanpablocs21@gmail.com",
