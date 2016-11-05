@@ -9,7 +9,18 @@ import $ from 'jquery';
 
 class ConnectAction{
 	constructor(){
-		console.log('connect 2');
+		this.st = {};
+		this.dom = {};
+		this.st.form = 'form';
+		this.catchDom();
+	}
+
+	catchDom(){
+		this.dom.form = $(this.st.form);
+		console.log(this.dom.form);
+	}
+	events(){
+
 	}
 }
 
