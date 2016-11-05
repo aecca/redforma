@@ -1,11 +1,12 @@
 <?php
 
-namespace Redforma\Reviews\Domain\Model\Claim;
+namespace Redforma\Reviews\Domain\Model\Review;
 
 use DateTime;
 use Redforma\Common\Domain\Model\Entity;
-use Redforma\Reviews\Domain\Model\Company\Company;
+use Redforma\Common\Util\Strings;
 use Redforma\Identity\Domain\Model\User\User;
+use Redforma\Reviews\Domain\Model\Company\Company;
 
 /**
  * Class Review
@@ -16,36 +17,32 @@ use Redforma\Identity\Domain\Model\User\User;
  */
 class Review extends Entity
 {
-    protected $user;
+    protected $title;
+    protected $slug;
+    protected $author;
     protected $company;
     protected $description;
     protected $createdAt;
     protected $updateAt;
     protected $images = [];
 
-    public function __construct(string $description, User $user, Company $company)
+    public function __construct(String $title, String $description, User $author, Company $company)
     {
+        $this->title = $title;
+        $this->slug = Strings::slugify($title);
         $this->description = $description;
-        $this->user = $user;
+        $this->author = $author;
         $this->company = $company;
         $this->createdAt = new DateTime();
         $this->updateAt  = new DateTime();
     }
 
     /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @return User
      */
-    public function getUser(): User
+    public function getAuthor(): User
     {
-        return $this->user;
+        return $this->author;
     }
 
     /**

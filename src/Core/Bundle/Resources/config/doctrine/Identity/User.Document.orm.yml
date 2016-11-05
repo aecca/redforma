@@ -1,0 +1,18 @@
+Redforma\Identity\Domain\Model\User\Document:
+    type: embeddable
+    fields:
+       type:
+           type: string
+           nullable: true
+           length: 10
+           options:
+               fixed: true
+           column: documentType
+       number:
+           type: string
+           nullable: false
+           length: 16
+           options:
+               fixed: true
+               default: ''
+           column: documentNumber

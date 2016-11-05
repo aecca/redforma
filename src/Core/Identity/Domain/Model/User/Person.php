@@ -17,6 +17,7 @@ class Person extends Entity
     protected $lastName;
     protected $contactInfo;
     protected $document;
+    protected $user;
 
     public function __construct(String $firstName , String $lastName)
     {

@@ -1,0 +1,70 @@
+Redforma\Identity\Domain\Model\User\User:
+    type: entity
+    table: rf_user
+    indexes:
+        fk_user_role:
+            columns:
+                - role_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        email:
+            type: string
+            nullable: false
+            length: 70
+            options:
+                fixed: false
+                default: ''
+        password:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+        state:
+            type: boolean
+            nullable: true
+
+    oneToOne:
+        person:
+          targetEntity: Person
+          cascade: {  }
+          fetch: LAZY
+          mappedBy: null
+          inversedBy: null
+          joinColumns:
+              id:
+                  referencedColumnName: id
+          orphanRemoval: false
+    manyToOne:
+        role:
+            targetEntity: Role
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                role_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

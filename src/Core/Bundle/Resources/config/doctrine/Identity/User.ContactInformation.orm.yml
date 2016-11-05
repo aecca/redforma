@@ -1,0 +1,32 @@
+Redforma\Identity\Domain\Model\User\ContactInformation:
+    type: embeddable
+    fields:
+        address:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+            column: contact_address
+        cellphone:
+            type: string
+            nullable: true
+            length: 9
+            options:
+                fixed: false
+            column: contact_cellphone
+        facebook:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+            column: contact_facebook
+        twitter:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+            column: contact_twitter
+    lifecycleCallbacks: {  }
