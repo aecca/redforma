@@ -36,4 +36,9 @@ class UserLoginType extends AbstractType
         ));
     }
 
+    public function getBlockPrefix()
+    {
+        return null;
+    }
+
 }

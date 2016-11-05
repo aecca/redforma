@@ -48,7 +48,7 @@ Redforma\Identity\Domain\Model\User\User:
     oneToOne:
         person:
           targetEntity: Person
-          cascade: {  }
+          cascade: ['all']
           fetch: LAZY
           mappedBy: null
           inversedBy: null

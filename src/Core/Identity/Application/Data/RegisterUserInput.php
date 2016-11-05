@@ -15,25 +15,17 @@ use Redforma\Common\Adapter\Input\Input;
  * @method string lastName()
  * @method string email()
  * @method string password()
+ * @method string documentType()
+ * @method string documentNumber()
+ * @method string role()
  */
 class RegisterUserInput extends Input
 {
-    protected $firstName;
-    protected $lastName;
-    protected $email;
-    protected $password;
-    protected $role;
-    protected $documentNumber;
-    protected $documentType;
-
-    public function __construct($firstName, $lastName, $email, $password, $role, $documentNumber, $documentType)
-    {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->password = $password;
-        $this->role = $role;
-        $this->documentNumber = $documentNumber;
-        $this->documentType = $documentType;
-    }
+    public $firstName;
+    public $lastName;
+    public $email;
+    public $password;
+    public $role = 'Reviewer';
+    public $documentNumber;
+    public $documentType;
 }

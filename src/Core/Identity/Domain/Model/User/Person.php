@@ -21,9 +21,9 @@ class Person extends Entity
 
     public function __construct(String $firstName , String $lastName)
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->document = new Document();
+        $this->setFirstName($firstName);
+        $this->setLastName($lastName);
+        $this->document = new Document(0);
         $this->contactInfo = new ContactInformation();
     }
 
@@ -49,9 +49,19 @@ class Person extends Entity
         $this->lastName = $lastName;
     }
 
+    public function setDocument(Document $document)
+    {
+        $this->document = $document;
+    }
+
     public function setContactInformation(ContactInformation $info)
     {
         $this->contactInfo = $info;
+    }
+
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\Type\UserLoginType;
+use AppBundle\Form\Type\UserRegisterType;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormError;
@@ -60,11 +61,29 @@ class AuthController extends Controller
     }
 
     /**
-     * @Route("/user/register", name="registerpage")
+     * @Route("/user/register", name="register")
      */
     public function registerAction(Request $request)
     {
-        return $this->render('user/register.html.twig', []);
+        $form = $this->createForm(UserRegisterType::class);
+
+        try {
+            $form->handleRequest($request);
+
+            if($form->isValid()) {
+                $data = $form->getData();
+                $user = $this->get('user.identity')->register($data);
+
+                return $this->redirectToRoute('homepage');
+            }
+
+        } catch (Exception $ex) {
+            $form->addError(new FormError($ex->getMessage()));
+        }
+
+        return $this->render('user/register.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
 }

@@ -12,46 +12,59 @@
                 Redforma
               </div>
             </h2>
-            <form class="ui large form" method="post">
+            <form method="POST" class="ui large form {% if form.vars.errors is not empty or not form.vars.valid  %} error {% endif %}" action>
               <div class="ui noborder segment">
                 <h1>Registrate</h1>
                 <div class="ui error message"></div>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="text" name="name" placeholder="Nombres">
+                    {{ form_widget(form.firstName) }}
                   </div>
                 </div>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="email" name="email" placeholder="Correo Electrónico">
+                    {{ form_widget(form.lastName) }}
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    {{ form_widget(form.email) }}
                   </div>
                 </div>
                 <div class="two fields">
                   <div class="field">
                     <div class="ui left icon input">
                       <i class="lock icon"></i>
-                      <input type="password" name="password" placeholder="Contraseña">
+                      {{ form_widget(form.password.first) }}
                     </div>
                   </div>
                   <div class="field">
                     <div class="ui left icon input">
                       <i class="lock icon"></i>
-                      <input type="password" name="password2" placeholder="Contraseña denuevo">
+                      {{ form_widget(form.password.second) }}
                     </div>
                   </div>
                 </div>
-                <div class="ui fluid large green submit button">Registrar</div>
+                {% if form.vars.errors is not empty or not form.vars.valid %}
+                  <div class="ui error message">
+                    {{ form_errors(form) }}
+                    {{ form_errors(form.password.first) }}
+                  </div>
+                {% endif %}
+                {{ form_end(form) }}
+
+                <button type="submit" class="ui fluid large green submit button">Registrar</button>
                 <div class="ui lostpassword">
                     <a href="">Olvidé mi contraseña?</a>
                 </div>
               </div>
-
             </form>
 
             <div class="ui transparent message">
-              Ya tienes una cuenta? <a href="/user/connect">Inicia Sesión</a>
+              Ya tienes una cuenta? <a href="{{ path('login') }}">Inicia Sesión</a>
             </div>
           </div>
         </div>

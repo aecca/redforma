@@ -13,7 +13,7 @@ use InvalidArgumentException;
  */
 class Input
 {
-    private static $attrCacheArray = [];
+    protected static $attrCacheArray = [];
 
     private function getProperties()
     {
@@ -32,7 +32,7 @@ class Input
             return $properties[$name];
         }
 
-        throw new InvalidArgumentException(sprintf("Undefined property %s", $name));
+        return null;
     }
 
 }

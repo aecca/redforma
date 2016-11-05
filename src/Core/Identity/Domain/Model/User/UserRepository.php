@@ -17,7 +17,7 @@ interface UserRepository
      * @param int $id
      * @return User
      */
-    public function find(int $id): User ;
+    public function find(int $id);
 
     /**
      * Find user by email
@@ -25,7 +25,7 @@ interface UserRepository
      * @param String $email
      * @return User
      */
-    public function findByEmail(String $email): User;
+    public function findByEmail(String $email);
 
     /**
      * Find user by email and role
@@ -34,7 +34,7 @@ interface UserRepository
      * @param String $role
      * @return User
      */
-    public function findByEmailRole(String $email, String $role): User;
+    public function findByEmailRole(String $email, String $role);
 
     /**
      * Persist user into repository
@@ -42,7 +42,7 @@ interface UserRepository
      * @param User $user
      * @return bool
      */
-    public function persist(User $user): bool ;
+    public function persist(User $user);
 
     /**
      * Check if email exists in repository

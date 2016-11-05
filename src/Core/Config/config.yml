@@ -6,7 +6,7 @@ services:
     ## Services
     user.identity:
       class: Redforma\Identity\Application\Service\UserService
-      arguments: ['@user.repository', '@auth.authentifier', '@auth.encryption']
+      arguments: ['@user.repository', '@user.role.repository', '@auth.authentifier', '@auth.encryption']
 
     auth.encryption:
       class: Redforma\Identity\Infrastructure\Service\RawEncryptionService
@@ -19,3 +19,7 @@ services:
     user.repository:
       class: Redforma\Identity\Infrastructure\Persistence\Doctrine\DoctrineUserRepository
       arguments: [Redforma\Identity\Domain\Model\User\User, '@doctrine.orm.entity_manager']
+
+    user.role.repository:
+        class: Redforma\Identity\Infrastructure\Persistence\Doctrine\DoctrineRoleRepository
+        arguments: [Redforma\Identity\Domain\Model\User\Role, '@doctrine.orm.entity_manager']

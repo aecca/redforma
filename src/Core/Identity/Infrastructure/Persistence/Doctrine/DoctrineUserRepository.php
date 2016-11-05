@@ -18,7 +18,7 @@ class DoctrineUserRepository extends DoctrineRepository implements UserRepositor
     /**
      * {@inheritdoc}
      */
-    public function find(int $id): User
+    public function find(int $id)
     {
         return $this->repository->find($id);
     }
@@ -26,7 +26,7 @@ class DoctrineUserRepository extends DoctrineRepository implements UserRepositor
     /**
      * {@inheritdoc}
      */
-    public function findByEmail(String $email): User
+    public function findByEmail(String $email)
     {
         return $this->repository->findOneBy(['email' => $email]);
     }
@@ -34,7 +34,7 @@ class DoctrineUserRepository extends DoctrineRepository implements UserRepositor
     /**
      * {@inheritdoc}
      */
-    public function findByEmailRole(String $email, String $role): User
+    public function findByEmailRole(String $email, String $role)
     {
         $qbd = $this->repository->createQueryBuilder('u')
             ->select('u')
@@ -53,7 +53,7 @@ class DoctrineUserRepository extends DoctrineRepository implements UserRepositor
     /**
      * {@inheritdoc}
      */
-    public function persist(User $user): bool
+    public function persist(User $user)
     {
         $this->em->persist($user);
         $this->em->flush($user);

@@ -95,4 +95,12 @@ class User extends Entity
         $this->password = null;
     }
 
+    public function setPerson(Person $person)
+    {
+        $person->setUser($this);
+
+        $this->person = $person;
+
+    }
+
 }
