@@ -14,20 +14,34 @@
             </h2>
             <form class="ui large form">
               <div class="ui noborder segment">
-                <h1>Iniciar Sesión</h1>
+                <h1>Registrate</h1>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="text" name="email" placeholder="Correo Electrónico">
+                    <input type="text" name="name" placeholder="Nombres">
                   </div>
                 </div>
                 <div class="field">
                   <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    <input type="password" name="password" placeholder="Contraseña">
+                    <i class="user icon"></i>
+                    <input type="email" name="email" placeholder="Correo Electrónico">
                   </div>
                 </div>
-                <div class="ui fluid large green submit button">Conectar</div>
+                <div class="two fields">
+                  <div class="field">
+                    <div class="ui left icon input">
+                      <i class="lock icon"></i>
+                      <input type="password" name="password" placeholder="Contraseña">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui left icon input">
+                      <i class="lock icon"></i>
+                      <input type="password" name="password2" placeholder="Contraseña denuevo">
+                    </div>
+                  </div>
+                </div>
+                <div class="ui fluid large green submit button">Registrar</div>
                 <div class="ui lostpassword">
                     <a href="">Olvidé mi contraseña?</a>
                 </div>
@@ -38,7 +52,7 @@
             </form>
 
             <div class="ui transparent message">
-              Nuevo en el sitio? <a href="/user/register">Registrate</a>
+              Ya tienes una cuenta? <a href="/user/connect">Inicia Sesión</a>
             </div>
           </div>
         </div>

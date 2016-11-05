@@ -15,4 +15,13 @@ class UserController extends Controller
     {
         return $this->render('user/connect.html.twig', []);
     }
+
+    /**
+     * @Route("/user/register", name="registerpage")
+     */
+    public function registerAction(Request $request)
+    {
+        return $this->render('user/register.html.twig', []);
+    }
+    
 }
