@@ -7,6 +7,7 @@ export default {
 		}]
 	},
 	email:{
+		identifier:'user_login[email]',
 		rules:[
 			{
 				type   : 'email', 
@@ -15,6 +16,7 @@ export default {
 		]
 	},
 	password:{
+        identifier:'user_login[password]',
 		rules:[
 			{
 				type:'empty',

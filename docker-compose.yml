@@ -12,7 +12,15 @@ services:
           - php7
         links:
           - php7
+          - mysql
     php7:
         build: ./docker/php/
         volumes:
           - .:/www
+    mysql:
+        image: mysql
+        ports:
+        - "3306:3306"
+        environment:
+          - MYSQL_ROOT_PASSWORD=1234
+          - MYSQL_DATABASE=db_redforma
