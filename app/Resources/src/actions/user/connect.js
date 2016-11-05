@@ -6,19 +6,32 @@
 import './connect.scss';
 
 import $ from 'jquery';
+import validationAuth from './../../validations/auth';
 
-class ConnectAction{
+class ConnectAction
+{
 	constructor(){
 		this.st = {};
 		this.dom = {};
 		this.st.form = 'form';
+
 		this.catchDom();
+		this.suscribeEvents();
 	}
 
 	catchDom(){
+		$.fn.form 		= require('semantic-ui-form');
 		this.dom.form = $(this.st.form);
-		console.log(this.dom.form);
 	}
+	
+	suscribeEvents(){
+		this.dom.form.form({
+			on:'blur',
+			// inline:true,
+			fields:validationAuth
+		});
+	}
+
 	events(){
 
 	}
