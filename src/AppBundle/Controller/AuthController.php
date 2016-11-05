@@ -15,7 +15,7 @@ class AuthController extends Controller
      */
     public function logoutAction()
     {
-        if($this->hasIdentify()) {
+        if($this->hasIdentity()) {
            $this->getAuthentifier()->logout();
         }
 
@@ -28,7 +28,7 @@ class AuthController extends Controller
      */
     public function loginAction(Request $request)
     {
-        if($this->hasIdentify()) {
+        if($this->hasIdentity()) {
             return $this->redirectToRoute('homepage');
         }
 

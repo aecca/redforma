@@ -18,7 +18,7 @@ class Controller extends BaseController
         return $this->get('auth.authentifier');
     }
 
-    public function hasIdentify()
+    public function hasIdentity()
     {
         return $this->getAuthentifier()->hasIdentity();
     }
