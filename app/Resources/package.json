@@ -32,6 +32,7 @@
     "jp-router": "^1.0.0",
     "jquery": "^3.1.0",
     "semantic-ui-css": "^2.2.4",
+    "semantic-ui-form": "^2.2.3",
     "semantic-ui-popup": "^2.2.3",
     "semantic-ui-transition": "^2.2.3"
   }
