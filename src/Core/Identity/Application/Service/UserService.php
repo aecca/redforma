@@ -4,7 +4,7 @@ namespace Redforma\Identity\Application\Service;
 
 use Redforma\Identity\Application\Data\RegisterUserInput;
 use Redforma\Identity\Domain\Model\EncryptionService;
-use Redforma\Identity\Domain\Model\User\Authentifier;
+use Redforma\Identity\Domain\Model\User\Auth\Authentifier;
 use Redforma\Identity\Domain\Model\User\User;
 use Redforma\Identity\Domain\Model\User\UserRepository;
 

@@ -36,6 +36,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        auth: '@auth.authentifier'
 
 # Doctrine Configuration
 doctrine:
@@ -51,19 +53,18 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
         naming_strategy: doctrine.orm.naming_strategy.underscore
-#        metadata_cache_driver: apc
-#        query_cache_driver: apc
-#        result_cache_driver: apc
-#        second_level_cache:
-#          enabled:  true
-#          log_enabled: true
-
         mappings:
             identity:
                 type: yml
-                dir: '%kernel.root_dir%/../src/Core/Bundle/Resources/config/doctrine/Identity'
+                dir: '%kernel.root_dir%/../src/Core/Identity/Infrastructure/Persistence/Doctrine/Mapping'
                 prefix: Redforma\Identity\Domain\Model
                 alias: Identity
+                is_bundle: false
+            reviews:
+                type: yml
+                dir: '%kernel.root_dir%/../src/Core/Reviews/Infrastructure/Persistence/Doctrine/Mapping'
+                prefix: Redforma\Reviews\Domain\Model
+                alias: Reviews
                 is_bundle: false
 # Swiftmailer Configuration
 swiftmailer:

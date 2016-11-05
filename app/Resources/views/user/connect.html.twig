@@ -5,42 +5,43 @@
 {% block body %}
     <main class=" user-connect">
         <div class="ui middle aligned center aligned grid">
-          <div class="column">
-            <h2 class="ui image header">
-              <i class="talk outline icon"></i>
-              <div class="content">
-                Redforma
-              </div>
-            </h2>
-            <form class="ui large form">
-              <div class="ui noborder segment">
-                <h1>Iniciar Sesión</h1>
-                <div class="field">
-                  <div class="ui left icon input">
-                    <i class="user icon"></i>
-                    <input type="text" name="email" placeholder="Correo Electrónico">
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    <input type="password" name="password" placeholder="Contraseña">
-                  </div>
-                </div>
-                <div class="ui fluid large green submit button">Conectar</div>
-                <div class="ui lostpassword">
-                    <a href="">Olvidé mi contraseña?</a>
-                </div>
-              </div>
-
-              <div class="ui error message"></div>
-
-            </form>
-
-            <div class="ui transparent message">
-              Nuevo en el sitio? <a href="/user/register">Registrate</a>
+            <div class="column">
+                <h2 class="ui image header">
+                    <i class="talk outline icon"></i>
+                    <span class="content">
+                        Redforma
+                    </span>
+                </h2>
+                <form method="POST" class="ui large form {% if form.vars.errors is not empty %} error {% endif %}" action>
+                    <div class="ui noborder segment">
+                        <h1>Iniciar Sesión</h1>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                {{ form_widget(form.email) }}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                {{ form_widget(form.password) }}
+                            </div>
+                        </div>
+                        <button type="submit" class="ui fluid large green submit button">Conectar</button>
+                        <div class="ui lostpassword">
+                            <a href="">Olvidé mi contraseña?</a>
+                        </div>
+                    </div>
+                    {% if form.vars.errors is not empty %}
+                        <div class="ui error message">
+                            {{ form_errors(form) }}
+                        </div>
+                    {% endif %}
+                    {{ form_end(form) }}
+                    <div class="ui transparent message">
+                        Nuevo en el sitio? <a href="#">Registrate</a>
+                    </div>
             </div>
-          </div>
         </div>
     </main>
 {% endblock %}

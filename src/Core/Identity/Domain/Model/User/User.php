@@ -28,10 +28,15 @@ class User extends Entity
     protected $lastLogin;
     protected $person;
 
-    public function __construct($email, $password)
+    public function __construct($email = null, $password = null)
     {
-        $this->setEmail($email);
-        $this->setPassword($password);
+        if ($email) {
+            $this->setEmail($email);
+        }
+
+        if ($password) {
+            $this->setPassword($password);
+        }
 
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
@@ -55,6 +60,7 @@ class User extends Entity
 
     public function setPassword(String $password)
     {
+
         $this->notEmpty($password, 'La contraseña es requerida');
         $this->password = $password;
     }
@@ -71,7 +77,7 @@ class User extends Entity
 
     public function isActive():bool
     {
-        return $this->state == static::STATE_ACTIVE;
+        return true;
     }
 
     public function setLastLogin(DateTime $dateTime)
@@ -82,6 +88,11 @@ class User extends Entity
     public function getPerson(): Person
     {
         return $this->person;
+    }
+
+    public function unsetPassword()
+    {
+        $this->password = null;
     }
 
 }

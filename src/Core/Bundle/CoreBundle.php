@@ -21,7 +21,7 @@ class CoreBundle extends BaseBundle
      */
     public function build(ContainerBuilder $container)
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Config'));
         $loader->load('config.yml');
     }
 }

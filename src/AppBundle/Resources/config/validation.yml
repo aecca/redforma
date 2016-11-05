@@ -1,0 +1,5 @@
+Redforma\Identity\Domain\Model\User\User:
+    properties:
+        email:
+            - NotBlank: ~
+            - Email: ~

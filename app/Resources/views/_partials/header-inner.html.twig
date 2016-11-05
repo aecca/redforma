@@ -3,12 +3,16 @@
 </a>
 <a class="item logo" href="/">
     <i class="talk outline icon"></i>
-    algo
+    Redforma
 </a>
 
 <div class="right item">
     <a class="active item">Inicio</a>
     <a class="item">Reclamos</a>
     <a class="item">Empresas</a>
-  <a class="ui inverted button connect" href="/user/connect">Conectar</a>
+    {% if auth.hasIdentity() %}
+        <a class="ui inverted button connect" href="/auth/logout">Salir</a>
+    {%  else %}
+        <a class="ui inverted button connect" href="/auth/login">Entrar</a>
+    {% endif %}
 </div>
