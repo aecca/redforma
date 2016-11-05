@@ -15,6 +15,13 @@
                 <form method="POST" class="ui large form {% if form.vars.errors is not empty %} error {% endif %}" action>
                     <div class="ui noborder segment">
                         <h1>Iniciar Sesión</h1>
+                        <div class="ui error message">
+                            {% if form.vars.errors is not empty %}
+                                <ul>
+                                    {{ form_errors(form) }}
+                                </ul>
+                            {% endif %}
+                        </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
@@ -32,11 +39,6 @@
                             <a href="">Olvidé mi contraseña?</a>
                         </div>
                     </div>
-                    {% if form.vars.errors is not empty %}
-                        <div class="ui error message">
-                            {{ form_errors(form) }}
-                        </div>
-                    {% endif %}
                     {{ form_end(form) }}
                     <div class="ui transparent message">
                         Nuevo en el sitio? <a href="#">Registrate</a>

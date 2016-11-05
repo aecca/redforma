@@ -22,6 +22,7 @@ class ConnectAction
 	catchDom(){
 		$.fn.form 		= require('semantic-ui-form');
 		this.dom.form = $(this.st.form);
+		console.log(this.dom.form);
 	}
 	
 	suscribeEvents(){

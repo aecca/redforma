@@ -19,7 +19,7 @@ import PublicationAction from './actions/publication/publication';
 const App = new Routes({location:window.location.pathname,debug:true});
 
 App.map('/', HomeAction);
-App.map('/user/(connect|register)', UserConnectAction);
+App.map('/auth/(login|register)', UserConnectAction);
 App.map('/publication', PublicationAction);
 // app.map('/serie/(.+)', (serie)=>{
 //     loadAsyncModule('pages/serie', (serie)=>serie.show());

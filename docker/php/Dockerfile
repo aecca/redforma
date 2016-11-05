@@ -26,3 +26,6 @@ RUN  pecl install xdebug \
 
 ## Install opcache
 RUN docker-php-ext-enable opcache
+
+RUN apt-get install -y wget
+RUN bash -c "wget http://getcomposer.org/composer.phar && mv composer.phar /usr/local/bin/composer"
