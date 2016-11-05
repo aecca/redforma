@@ -6,3 +6,4 @@ var/sessions/*
 web/assets/
 app/Resources/node_modules/
 app/Resources/npm-debug.log
+app/config/parameters.yml
