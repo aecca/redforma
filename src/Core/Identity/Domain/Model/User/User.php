@@ -3,6 +3,7 @@
 namespace Redforma\Identity\Domain\Model\User;
 
 use DateTime;
+use Redforma\Common\Domain\Model\Entity;
 use Redforma\Identity\Domain\Model\EmailService;
 
 /**
@@ -12,7 +13,7 @@ use Redforma\Identity\Domain\Model\EmailService;
  * @author Andy Ecca <andy.ecca@gmail.com>
  * @copyright (c) 2016
  */
-class User extends Person
+class User extends Entity
 {
     const STATE_ACTIVE = 1;
     const STATE_INACTIVE = 0;
@@ -25,10 +26,12 @@ class User extends Person
     protected $createdAt;
     protected $updatedAt;
     protected $lastLogin;
+    protected $person;
 
-    public function __construct($firstName, $lastName)
+    public function __construct($email, $password)
     {
-        parent::__construct($firstName, $lastName);
+        $this->setEmail($email);
+        $this->setPassword($password);
 
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
@@ -56,14 +59,13 @@ class User extends Person
         $this->password = $password;
     }
 
-    public function getRole(): String
+    public function getRole(): Role
     {
         return $this->role;
     }
 
-    public function setRole(String $role)
+    public function setRole(Role $role)
     {
-        $this->same(true, RoleType::isValidValue($role), 'El rol del usuario es incorrecto');
         $this->role = $role;
     }
 
@@ -75,6 +77,11 @@ class User extends Person
     public function setLastLogin(DateTime $dateTime)
     {
         $this->lastLogin = $dateTime;
+    }
+
+    public function getPerson(): Person
+    {
+        return $this->person;
     }
 
 }

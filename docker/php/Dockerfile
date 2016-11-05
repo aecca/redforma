@@ -16,7 +16,8 @@ RUN pecl install apcu-$APCU_VERSION \
   && pecl install apcu_bc-$APCU_BC_VERSION \
   && docker-php-ext-enable apc \
   && rm -f /usr/local/etc/php/conf.d/docker-php-ext-apc.ini \
-  && rm -f /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini
+  && rm -f /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini \
+  && docker-php-ext-install pdo_mysql
 
 RUN  pecl install xdebug \
     && docker-php-ext-enable xdebug \

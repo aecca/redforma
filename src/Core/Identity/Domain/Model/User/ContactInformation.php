@@ -13,7 +13,6 @@ class ContactInformation
 {
     protected $address;
     protected $cellphone;
-    protected $phone;
     protected $facebook;
     protected $twitter;
 
@@ -35,15 +34,5 @@ class ContactInformation
     public function setCellphone(String $cellphone)
     {
         $this->cellphone = $cellphone;
-    }
-
-    public function getPhone(): String
-    {
-        return $this->phone;
-    }
-
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
     }
 }

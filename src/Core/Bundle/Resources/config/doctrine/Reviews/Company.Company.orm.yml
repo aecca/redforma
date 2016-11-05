@@ -1,0 +1,135 @@
+Redforma\Reviews\Domain\Model\Company\Company:
+    type: entity
+    table: rf_company
+    indexes:
+        fk_company_creator:
+            columns:
+                - creator_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+                default: ''
+        slug:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''
+        ruc:
+            type: string
+            nullable: true
+            length: 11
+            options:
+                fixed: false
+        numStats:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: num_stats
+        numFavs:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: num_favs
+        image:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        banner:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        contactAdress:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: contact_adress
+        contactPhone1:
+            type: string
+            nullable: true
+            length: 9
+            options:
+                fixed: false
+            column: contact_phone1
+        contactPhone2:
+            type: string
+            nullable: true
+            length: 9
+            options:
+                fixed: false
+            column: contact_phone2
+        contactFacebook:
+            type: string
+            nullable: true
+            length: 80
+            options:
+                fixed: false
+            column: contact_facebook
+        contactTwitter:
+            type: string
+            nullable: true
+            length: 80
+            options:
+                fixed: false
+            column: contact_twitter
+        contactWebpage:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: contact_webpage
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+        featered:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+        state:
+            type: boolean
+            nullable: true
+            options:
+                default: '1'
+    manyToOne:
+        creator:
+            targetEntity: Redforma\Identity\Domain\Model\User\User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                creator_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

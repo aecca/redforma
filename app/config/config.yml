@@ -47,18 +47,24 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+#        metadata_cache_driver: apc
+#        query_cache_driver: apc
+#        result_cache_driver: apc
+#        second_level_cache:
+#          enabled:  true
+#          log_enabled: true
 
+        mappings:
+            identity:
+                type: yml
+                dir: '%kernel.root_dir%/../src/Core/Bundle/Resources/config/doctrine/Identity'
+                prefix: Redforma\Identity\Domain\Model
+                alias: Identity
+                is_bundle: false
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

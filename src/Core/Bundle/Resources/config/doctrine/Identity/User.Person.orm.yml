@@ -1,0 +1,49 @@
+Redforma\Identity\Domain\Model\User\Person:
+    type: entity
+    table: rf_person
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        firstName:
+            type: string
+            nullable: false
+            length: 70
+            options:
+                fixed: false
+                default: ''
+            column: firstName
+        lastName:
+            type: string
+            nullable: false
+            length: 70
+            options:
+                fixed: false
+                default: ''
+            column: lastName
+    embedded:
+        contactInfo:
+          class: ContactInformation
+          columnPrefix: false
+        document:
+          class: Document
+          columnPrefix: false
+
+    oneToOne:
+          user:
+              targetEntity: User
+              cascade: {  }
+              fetch: LAZY
+              mappedBy: null
+              inversedBy: null
+              joinColumns:
+                  id:
+                      referencedColumnName: id
+              orphanRemoval: false
+    lifecycleCallbacks: {  }

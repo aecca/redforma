@@ -1,0 +1,90 @@
+Redforma\Reviews\Domain\Model\Review\Review:
+    type: entity
+    table: rf_reviews
+    indexes:
+        fk_review_author:
+            columns:
+                - author_id
+        fk_review_company:
+            columns:
+                - company_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+                default: ''
+        slug:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+                default: ''
+        description:
+            type: string
+            nullable: false
+            length: 700
+            options:
+                fixed: false
+                default: ''
+        numStars:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: num_stars
+        numVisits:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: num_visits
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+        state:
+            type: boolean
+            nullable: true
+            options:
+                default: '1'
+    manyToOne:
+        author:
+            targetEntity: Redforma\Identity\Domain\Model\User\User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                author_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        company:
+            targetEntity: Redforma\Reviews\Domain\Model\Company\Company
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                company_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
