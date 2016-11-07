@@ -2,6 +2,7 @@
 
 namespace Redforma\Reviews\Domain\Model\Company;
 
+use Redforma\Common\Domain\Model\Entity;
 use Redforma\Common\Util\Strings;
 
 /**
@@ -11,12 +12,15 @@ use Redforma\Common\Util\Strings;
  * @author Andy Ecca <andy.ecca@gmail.com>
  * @copyright (c) 2016
  */
-class Category
+class Category extends Entity
 {
-    protected $id;
+    const STATE_ACTIVE  = 1;
+    const STATE_INACTIVE = 0;
+
     protected $slug;
     protected $name;
     protected $image;
+    protected $state;
 
     public function __construct(String $name, String $image = null)
     {

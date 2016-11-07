@@ -7,7 +7,7 @@ Redforma\Identity\Domain\Model\User\Document:
            length: 10
            options:
                fixed: true
-           column: documentType
+           column: document_type
        number:
            type: string
            nullable: false
@@ -15,4 +15,4 @@ Redforma\Identity\Domain\Model\User\Document:
            options:
                fixed: true
                default: ''
-           column: documentNumber
+           column: document_number

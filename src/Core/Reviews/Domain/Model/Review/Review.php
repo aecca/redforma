@@ -22,9 +22,12 @@ class Review extends Entity
     protected $author;
     protected $company;
     protected $description;
-    protected $createdAt;
-    protected $updateAt;
     protected $images = [];
+    protected $numFavs = 0;
+    protected $numStats = 0;
+    protected $createdAt;
+    protected $updatedAt;
+    protected $state;
 
     public function __construct(String $title, String $description, User $author, Company $company)
     {
@@ -34,7 +37,7 @@ class Review extends Entity
         $this->author = $author;
         $this->company = $company;
         $this->createdAt = new DateTime();
-        $this->updateAt  = new DateTime();
+        $this->updatedAt  = new DateTime();
     }
 
     /**
@@ -72,9 +75,9 @@ class Review extends Entity
     /**
      * @return DateTime
      */
-    public function getUpdateAt(): DateTime
+    public function getUpdatedAt(): DateTime
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     /**

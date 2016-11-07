@@ -39,14 +39,14 @@ Redforma\Reviews\Domain\Model\Review\Review:
             options:
                 fixed: false
                 default: ''
-        numStars:
+        numFavs:
             type: integer
             nullable: true
             options:
                 unsigned: false
                 default: '0'
             column: num_stars
-        numVisits:
+        numStats:
             type: integer
             nullable: true
             options:

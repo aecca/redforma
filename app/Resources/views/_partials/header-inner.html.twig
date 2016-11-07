@@ -9,10 +9,10 @@
 <div class="right item">
     <a class="active item">Inicio</a>
     <a class="item">Reclamos</a>
-    <a class="item">Empresas</a>
+    <a class="item" href="{{ path('companies') }}">Empresas</a>
     {% if auth.hasIdentity() %}
-        <a class="ui inverted button connect" href="/auth/logout">Salir</a>
+        <a class="ui inverted button connect" href="{{ path('logout') }}">Salir</a>
     {%  else %}
-        <a class="ui inverted button connect" href="/auth/login">Entrar</a>
+        <a class="ui inverted button connect" href="{{ path('login') }}">Entrar</a>
     {% endif %}
 </div>

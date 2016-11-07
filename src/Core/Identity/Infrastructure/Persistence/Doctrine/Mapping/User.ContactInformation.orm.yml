@@ -29,4 +29,3 @@ Redforma\Identity\Domain\Model\User\ContactInformation:
             options:
                 fixed: false
             column: contact_twitter
-    lifecycleCallbacks: {  }

@@ -28,6 +28,7 @@ framework:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
         save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        name: rf_s
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -66,6 +67,13 @@ doctrine:
                 prefix: Redforma\Reviews\Domain\Model
                 alias: Reviews
                 is_bundle: false
+
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/../migrations/database"
+    namespace: Redformaa\Migrations
+    table_name: rf_migration_versions
+    name: Redforma Migrations
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

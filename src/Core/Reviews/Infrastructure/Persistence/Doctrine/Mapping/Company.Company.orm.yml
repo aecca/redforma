@@ -35,6 +35,14 @@ Redforma\Reviews\Domain\Model\Company\Company:
             length: 11
             options:
                 fixed: false
+
+        numReviews:
+            type: integer
+            nullable: true
+            options:
+               unsigned: false
+               default: '0'
+            column: num_reviews
         numStats:
             type: integer
             nullable: true
@@ -61,48 +69,6 @@ Redforma\Reviews\Domain\Model\Company\Company:
             length: 100
             options:
                 fixed: false
-        contactAdress:
-            type: string
-            nullable: true
-            length: 100
-            options:
-                fixed: false
-            column: contact_adress
-        contactPhone1:
-            type: string
-            nullable: true
-            length: 9
-            options:
-                fixed: false
-            column: contact_phone1
-        contactPhone2:
-            type: string
-            nullable: true
-            length: 9
-            options:
-                fixed: false
-            column: contact_phone2
-        contactFacebook:
-            type: string
-            nullable: true
-            length: 80
-            options:
-                fixed: false
-            column: contact_facebook
-        contactTwitter:
-            type: string
-            nullable: true
-            length: 80
-            options:
-                fixed: false
-            column: contact_twitter
-        contactWebpage:
-            type: string
-            nullable: true
-            length: 100
-            options:
-                fixed: false
-            column: contact_webpage
         createdAt:
             type: datetime
             nullable: true
@@ -111,16 +77,36 @@ Redforma\Reviews\Domain\Model\Company\Company:
             type: datetime
             nullable: true
             column: updated_at
-        featered:
+        isFeatured:
             type: boolean
             nullable: true
             options:
                 default: '0'
+            column: featured
         state:
             type: boolean
             nullable: true
             options:
                 default: '1'
+    embedded:
+        contactInfo:
+          class: ContactInformation
+          columnPrefix: false
+
+    manyToMany:
+        categories:
+          orphanRemoval: true
+          cascade: ["all"]
+          targetEntity: Category
+          joinTable:
+            name: rf_company_categories_group
+            joinColumns:
+              company_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              category_id:
+                referencedColumnName: id
+                unique: true
     manyToOne:
         creator:
             targetEntity: Redforma\Identity\Domain\Model\User\User

@@ -1,0 +1,4 @@
+Redforma\Reviews\Domain\Model\Company\Category:
+    category{1..10}:
+        name: <name()>
+        slug: <slug()>

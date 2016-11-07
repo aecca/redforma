@@ -13,7 +13,7 @@
 
         <div class="ui text container">
             <h1 class="ui inverted header">
-                Algo te escucha
+                Redforma te escucha
             </h1>
             <h2>Haz valer tus derechos como consumidor</h2>
             <div class="ui huge black button">Publicar</div>
@@ -22,11 +22,25 @@
     </div>
 
     <main class="home-action">
-        <div class="ui container p20" style="height:150px;">
-            {% if auth.hasIdentity() %}
-                <h3> Hola, {{ auth.getIdentity().getPerson().getFirstName() }}</h3>
-            {% endif %}
-            <p>ola k ase2</p>
+        <div class="ui container p20">
+            <div class="ui large header">Categorias Destacadas</div>
+            <span>En <b> Redforma </b> puedes buscar incidencias mediante categorias </span>
+
+            <div class="ui container p20">
+
+                <div class="ui massive horizontal list">
+                    {% for category in categories %}
+                        <div class="item">
+                            <img class="ui avatar image" src="http://lorempixel.com/40/40/?time={{ category.id }}">
+                            <div class="content">
+                                <a class="header">{{ category.name }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+
         </div>
 
         {# gray #}

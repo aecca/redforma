@@ -12,6 +12,6 @@ class PublicationController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('publication/index.html.twig', []);
+        return $this->render(':reviews/publication:index.html.twig', []);
     }
 }

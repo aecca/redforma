@@ -12,14 +12,13 @@
                         Redforma
                     </span>
                 </h2>
-                <form method="POST" class="ui large form {% if form.vars.errors is not empty %} error {% endif %}" action>
+                <form method="POST" class="ui large form {% if form.vars.errors is not empty %} error {% endif %}"
+                      action>
                     <div class="ui noborder segment">
                         <h1>Iniciar Sesión</h1>
                         <div class="ui error message">
                             {% if form.vars.errors is not empty %}
-                                <ul>
-                                    {{ form_errors(form) }}
-                                </ul>
+                                {{ form_errors(form) }}
                             {% endif %}
                         </div>
                         <div class="field">
@@ -43,6 +42,7 @@
                     <div class="ui transparent message">
                         Nuevo en el sitio? <a href="{{ path('register') }}">Registrate</a>
                     </div>
+                </form>
             </div>
         </div>
     </main>

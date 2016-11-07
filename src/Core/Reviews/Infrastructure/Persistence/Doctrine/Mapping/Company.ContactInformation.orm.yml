@@ -1,0 +1,45 @@
+Redforma\Reviews\Domain\Model\Company\ContactInformation:
+    type: embeddable
+    fields:
+      address:
+          type: string
+          nullable: true
+          length: 100
+          options:
+              fixed: false
+          column: contact_address
+      phone1:
+          type: string
+          nullable: true
+          length: 9
+          options:
+              fixed: false
+          column: contact_phone1
+      phone2:
+          type: string
+          nullable: true
+          length: 9
+          options:
+              fixed: false
+          column: contact_phone2
+      facebook:
+          type: string
+          nullable: true
+          length: 80
+          options:
+              fixed: false
+          column: contact_facebook
+      twitter:
+          type: string
+          nullable: true
+          length: 80
+          options:
+              fixed: false
+          column: contact_twitter
+      webpage:
+          type: string
+          nullable: true
+          length: 100
+          options:
+              fixed: false
+          column: contact_webpage

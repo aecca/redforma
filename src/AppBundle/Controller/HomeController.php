@@ -2,24 +2,24 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class HomeController
+ *
+ * @package AppBundle\Controller
+ * @author Andy Ecca <andy.ecca@gmail.com>
+ * @copyright (c) 2016
+ */
 class HomeController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
+
     public function indexAction(Request $request)
     {
-        return $this->render('home/index.html.twig', []);
+        return $this->render(':reviews/home:index.html.twig', [
+            // Listar categorias destacadas
+            'categories' => $this->get('company.service')->listFeaturedCategories(20)
+        ]);
     }
 
-    /**
-     * @Route("/blank", name="blankpage")
-     */
-    public function blankAction(Request $request)
-    {
-        return $this->render('home/blank.html.twig', []);
-    }
 }

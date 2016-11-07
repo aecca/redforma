@@ -1,0 +1,54 @@
+{% extends '_layouts/base.html.twig' %}
+
+{% set bodyClass = 'app-home' %}
+
+{% block body %}
+    <div class="ui inverted vertical splash center aligned segment main-header">
+
+        <div class="ui container">
+            <div class="ui large secondary inverted menu">
+                {% include '_partials/header-inner.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div style="background:#eee;">
+            <div class="ui container p20">
+                <div class="ui large header">Empresas</div>
+                <span>Listado completo de todas las empresas registradas en <b>Redforma</b></span>
+
+                {# cards #}
+                <div class="ui link four cards p20">
+                    {% for company in companies %}
+                        <div class="card">
+                            <div class="medium image">
+                                <img src="http://lorempixel.com/400/200">
+                            </div>
+                            <div class="content">
+                                <div class="mini header">{{ company.name }}</div>
+                                <div class="meta">
+                                    <span class="date">
+                                        {{ company.prettyCategories }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <span><i class="user icon"></i> 35 incidencias</span>
+                                <span class="right floated">
+                              <div class="ui star rating" data-rating="2"></div>
+                            </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {# /cards#}
+            </div>
+        </div>
+
+    </main>
+
+    {# footer #}
+    {% include '_partials/footer.html.twig' %}
+
+{% endblock %}
