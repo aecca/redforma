@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Form\Type\UserLoginType;
 use AppBundle\Form\Type\UserRegisterType;
 use Exception;
+use Redforma\Identity\Application\Service\UserService;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -51,7 +52,7 @@ class UserController extends Controller
                     throw new Exception((string)$errors);
                 }
 
-                $this->get('user.identity')->authenticate($user);
+                $this->userService()->authenticate($user);
 
                 return $this->redirectToRoute('homepage');
             }
@@ -60,9 +61,17 @@ class UserController extends Controller
             $form->addError(new FormError($ex->getMessage()));
         }
 
-        return $this->render(':reviews/user:connect.html.twig', [
+        return $this->render(':reviews/user:login.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * Profile Action
+     */
+    public function profileAction()
+    {
+        return $this->render(':reviews/user:login.html.twig', []);
     }
 
     /**
@@ -76,7 +85,11 @@ class UserController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                $this->get('user.identity')->register($form->getData());
+
+                // Register and auto-authenticate
+                $user = $this->userService()->register($form->getData());
+                $this->userService()->authenticate($user);
+
                 return $this->redirectToRoute('homepage');
             }
 
@@ -87,6 +100,11 @@ class UserController extends Controller
         return $this->render(':reviews/user:register.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    private function userService(): UserService
+    {
+        return $this->get('user.identity');
     }
 
 }

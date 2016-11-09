@@ -1,58 +1,43 @@
 {% extends '_layouts/base.html.twig' %}
 
-{% set bodyClass = 'app-home' %}
-
 {% block body %}
-    <div class="ui inverted vertical splash center aligned segment main-header">
-
-        <div class="ui container">
-            <div class="ui large secondary inverted menu">
-                {% include '_partials/header-inner.html.twig' %}
-            </div>
-        </div>
-
-        <div class="ui text container">
-            <h1 class="ui inverted header">
-                Redforma te escucha
-            </h1>
-            <h2>Haz valer tus derechos como consumidor</h2>
-            <div class="ui huge black button">Publicar</div>
-        </div>
-
+    <div class="jumbotron">
+        <h1>Hello, world!</h1>
+        <p>...</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Registrar Incidencia</a></p>
     </div>
 
-    <main class="home-action">
-        <div class="ui container p20">
-            <div class="ui large header">Categorias Destacadas</div>
-            <span>En <b> Redforma </b> puedes buscar incidencias mediante categorias </span>
+    <h3>Ultimas Incidencias </h3>
+    <hr class="separator">
+    <div class="list-categories">
+        <div class="row">
+            <div class="well">Aun no se han registrado incidencias</div>
+        </div>
+    </div>
 
-            <div class="ui container p20">
-
-                <div class="ui massive horizontal list">
-                    {% for category in categories %}
-                        <div class="item">
-                            <img class="ui avatar image" src="http://lorempixel.com/40/40/?time={{ category.id }}">
-                            <div class="content">
-                                <a class="header">{{ category.name }}</a>
-                            </div>
+    <h3>Categorias </h3>
+    <span>Listado de categorias destacadas en <b>Redforma</b></span>
+    <hr class="separator">
+    <div class="list-categories">
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-sm-2 col-md-2">
+                    <div class="thumbnail">
+                        <img src="http://lorempixel.com/170/80/?time={{ category.id }}" alt="...">
+                        <div class="caption">
+                            <h4>{{ category.name }}</h4>
                         </div>
-                    {% endfor %}
+                    </div>
                 </div>
-
-            </div>
-
+            {% endfor %}
         </div>
+    </div>
 
-        {# gray #}
-        <div style="width:100%;height:200px;background:#eee;">
-            <div class="ui container p20">
-                <p>awesome!</p>
-            </div>
-        </div>
-
-    </main>
-
-    {# footer #}
-    {% include '_partials/footer.html.twig' %}
+    <h3>Empresas </h3>
+    <span>Listado de empresas destacadas en <b>Redforma</b></span>
+    <hr class="separator">
+    <div class="list-categories">
+        <div class="row"></div>
+    </div>
 
 {% endblock %}

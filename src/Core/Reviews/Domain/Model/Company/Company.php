@@ -98,4 +98,9 @@ class Company extends Entity
         return $this->contactInfo;
     }
 
+    public function getNumReviews()
+    {
+        return $this->numReviews;
+    }
+
 }
