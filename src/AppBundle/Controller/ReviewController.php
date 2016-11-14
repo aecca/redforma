@@ -19,12 +19,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 class ReviewController extends Controller
 {
     /**
-     * @Route(
-     *     "/reviews/register",
-     *     name="register_review",
-     *     defaults={"step": 1},
-     *     requirements={"step": "\d+", "review_id": "\d+"}
-     * )
+     * @Route("/reviews/register", name="register_review")
      */
     public function indexAction(Request $request)
     {
@@ -34,7 +29,7 @@ class ReviewController extends Controller
             ]);
         }
 
-        $step = (int) $request->query->get('step');
+        $step = (int) $request->query->get('step', 1);
 
         switch ($step) {
 
@@ -70,7 +65,6 @@ class ReviewController extends Controller
              * evidencias en caso las hubiera.
              */
             case 2 :
-
                 $reviewId = (int) $request->get('review_id');
                 $form = $this->createForm(ReviewRegisterType::class);
 
@@ -78,13 +72,8 @@ class ReviewController extends Controller
                     $form->handleRequest($request);
 
                     if ($form->isValid()) {
-                        $data = $form->getData();
-                        $data->setAuthorId($this->getAuth()->getId());
-
-                        $result = $this->get('review.service')->addReview($data);
                         return $this->redirectToRoute('register_review', [
-                            'step' => 2,
-                            'review_id' => $result
+                            'review_id' => $reviewId
                         ]);
                     }
 

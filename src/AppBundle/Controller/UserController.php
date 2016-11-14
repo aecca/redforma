@@ -60,7 +60,7 @@ class UserController extends Controller
 
                 $this->userService()->authenticate($user);
 
-                return $this->redirectUrl('homepage');
+                return $this->redirectUrl($request, 'homepage');
             }
 
         } catch (Exception $ex) {
