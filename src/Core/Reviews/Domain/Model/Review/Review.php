@@ -21,6 +21,7 @@ class Review extends Entity
     protected $slug;
     protected $author;
     protected $company;
+    protected $companyName;
     protected $description;
     protected $images = [];
     protected $numFavs = 0;
@@ -86,6 +87,11 @@ class Review extends Entity
     public function getImages(): array
     {
         return $this->images;
+    }
+
+    public function setCompanyName($companyName)
+    {
+        $this->companyName = $companyName;
     }
 
 }

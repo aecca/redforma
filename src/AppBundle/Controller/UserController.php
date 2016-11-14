@@ -39,6 +39,12 @@ class UserController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
+        $redirectUrl = $request->get('redirect_url', false);
+
+        if ($redirectUrl) {
+            $this->get('session')->set('redirect_url', $redirectUrl);
+        }
+
         $form = $this->createForm(UserLoginType::class);
 
         try {
@@ -54,7 +60,7 @@ class UserController extends Controller
 
                 $this->userService()->authenticate($user);
 
-                return $this->redirectToRoute('homepage');
+                return $this->redirectUrl('homepage');
             }
 
         } catch (Exception $ex) {
@@ -90,7 +96,7 @@ class UserController extends Controller
                 $user = $this->userService()->register($form->getData());
                 $this->userService()->authenticate($user);
 
-                return $this->redirectToRoute('homepage');
+                return $this->redirectUrl('homepage');
             }
 
         } catch (Exception $ex) {
@@ -100,6 +106,24 @@ class UserController extends Controller
         return $this->render(':reviews/user:register.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    private function redirectUrl($url)
+    {
+        $sessionRedirectUrl = $this->get('session')->get('redirect_url', false);
+
+        if ($sessionRedirectUrl) {
+            /**
+             * Luego de que se verifica la url de redireccion,
+             * se procede a eliminarla de la session. para evitar
+             * problemas cuando se realizen multiples inicios de sesion.
+             */
+            $this->get('session')->remove('redirect_url');
+
+            return $this->redirect($sessionRedirectUrl);
+        } else {
+            return $this->redirectToRoute($url);
+        }
     }
 
     private function userService(): UserService

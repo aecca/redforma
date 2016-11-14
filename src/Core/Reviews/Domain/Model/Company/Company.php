@@ -17,6 +17,7 @@ use Redforma\Identity\Domain\Model\User\User;
 class Company extends Entity
 {
     const EMPTY_CATEGORIES = 'Sin Categorias';
+    const OTHER_COMPANY = 1;
 
     protected $creator;
     protected $name;

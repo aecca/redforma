@@ -30,17 +30,4 @@ class DoctrineCategoryRepository extends DoctrineRepository  implements Category
     {
         return $this->repository->findAll();
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function allFeatured($limit)
-    {
-        $qbd = $this->repository->createQueryBuilder('c')
-            ->select('c')
-            ->join('Reviews:Company\Company', 'comp', Expr\Join::WITH , 'comp.categories =c.id')
-            ->orderBy('comp.id', 'asc')
-            ->getQuery()
-            ->getResult();
-    }
 }

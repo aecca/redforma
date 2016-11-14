@@ -1,6 +1,6 @@
 Redforma\Reviews\Domain\Model\Review\Review:
     type: entity
-    table: rf_reviews
+    table: rf_review
     indexes:
         fk_review_author:
             columns:
@@ -36,6 +36,14 @@ Redforma\Reviews\Domain\Model\Review\Review:
             type: string
             nullable: false
             length: 700
+            options:
+                fixed: false
+                default: ''
+        companyName:
+            type: string
+            nullable: true
+            length: 120
+            column: company_name
             options:
                 fixed: false
                 default: ''

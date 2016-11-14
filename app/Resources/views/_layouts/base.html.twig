@@ -34,7 +34,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if not auth.hasIdentity() %}
                     <li>
-                        <a href="{{ path('login') }}" class="btn btn-default navbar-btn button">Sign in</a>
+                        <a style="vertical-align: middle; height: 30px; padding: 4px;"  href="{{ path('login') }}" class="btn btn-default navbar-btn button">Sign in</a>
                     </li>
                 {% else %}
                     {% set user = auth.getIdentity() %}
@@ -52,9 +52,9 @@
                         </ul>
                     </li>
                     <li>
-                        <button onclick="location.href='{{ path('logout') }}'" class="btn btn-danger navbar-btn btn-sm">
+                        <a style="vertical-align: middle; height: 30px; padding: 2px 15px;" href="{{ path('logout') }}" class="btn btn-danger navbar-btn btn-xs">
                             Salir
-                        </button>
+                        </a>
                     </li>
                 {% endif %}
             </ul>

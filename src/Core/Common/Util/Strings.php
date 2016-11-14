@@ -25,10 +25,10 @@ class Strings
     /**
      * Validate email
      *
-     * @param $email
+     * @param string $email
      * @return bool
      */
-    public static function isEmail(String $email): bool
+    public static function isEmail($email): bool
     {
         if(empty($email)) {
             return false;

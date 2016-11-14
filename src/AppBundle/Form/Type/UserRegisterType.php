@@ -3,7 +3,6 @@
 namespace AppBundle\Form\Type;
 
 use Redforma\Identity\Application\Data\RegisterUserInput;
-use Redforma\Identity\Domain\Model\User\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -30,8 +29,8 @@ class UserRegisterType extends AbstractType
         $builder->add('password', RepeatedType::class, [
             'type' => PasswordType::class,
             'invalid_message' => 'Las contraseñas no coinciden',
-            'first_options'  => ['label' => 'Password', 'attr' => ['placeholder' => '****']],
-            'second_options' => ['label' => 'Repeat Password', 'attr' => ['placeholder' => '****']],
+            'first_options'   => ['label' => 'Password', 'attr' => ['placeholder' => '****']],
+            'second_options'  => ['label' => 'Repeat Password', 'attr' => ['placeholder' => '****']],
         ]);
     }
 

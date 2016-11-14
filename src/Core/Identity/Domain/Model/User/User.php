@@ -47,7 +47,7 @@ class User extends Entity
         return $this->email;
     }
 
-    public function setEmail(String $email)
+    public function setEmail($email)
     {
         $this->same(true, (new EmailService())->isValidEmail($email), 'El email es incorrecto');
         $this->email = $email;

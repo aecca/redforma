@@ -25,12 +25,4 @@ interface CategoryRepository
      * @return Category[]
      */
     public function all();
-
-    /**
-     * Return all featured categories
-     *
-     * @param $limit
-     * @return Category[]
-     */
-    public function allFeatured($limit);
 }
