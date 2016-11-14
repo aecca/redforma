@@ -18,9 +18,14 @@ use Redforma\Common\Adapter\Input\Input;
  */
 class AddReviewInput extends Input
 {
-    protected $title;
-    protected $description;
-    protected $companyId;
-    protected $companyName;
-    protected $authorId;
+    public $title;
+    public $description;
+    public $companyId;
+    public $companyName;
+    public $authorId;
+
+    public function setAuthorId($authorId)
+    {
+        $this->authorId = $authorId;
+    }
 }

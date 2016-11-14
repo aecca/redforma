@@ -26,6 +26,9 @@ class SessionAuthentifier extends Authentifier
         $this->session = $session;
     }
 
+    /**
+     * @return User
+     */
     public function getIdentity()
     {
         return $this->session->get('redforma_auth');
@@ -44,7 +47,7 @@ class SessionAuthentifier extends Authentifier
         $this->session->remove('redforma_auth');
     }
 
-    public function hasIdentity()
+    public function hasIdentity(): bool
     {
         return $this->session->has('redforma_auth');
     }

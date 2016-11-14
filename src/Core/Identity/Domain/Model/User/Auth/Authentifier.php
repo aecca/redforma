@@ -53,7 +53,7 @@ abstract class Authentifier
         return $this->encryptionService->validatePassword($rawPassword, $encryptedPassword);
     }
 
-    abstract public function hasIdentity();
+    abstract public function hasIdentity(): bool;
     abstract public function logout();
     abstract public function getIdentity();
     abstract public function persistIdentity(User $user);

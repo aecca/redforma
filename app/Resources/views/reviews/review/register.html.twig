@@ -3,7 +3,60 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            Hi!
+            <div class="review-form">
+                {% if form.vars.errors is not empty or not form.vars.valid %}
+                    <ul class="forms-error">
+                        {{ form_errors(form) }}
+                    </ul>
+                {% endif %}
+
+                {% if step <= 1 %}
+                    <h3><b>Paso 1</b> : Registrar Incidencia </h3>
+
+                    <form class="form-horizontal" method="POST" novalidate>
+                        <div class="form-group">
+                            <h4>Empresa</h4>
+                            {{ form_widget(form.companyName, {attr: {'class': 'form-control review-company'}}) }}
+                            {{ form_widget(form.companyId,   {attr: {'class' : 'review-company-id'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Titulo</h4>
+                            {{ form_widget(form.title, {attr: {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            <h4>Descripcion</h4>
+                            {{ form_widget(form.description, {attr: {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-group btn-group-justified btn-default">
+                                <h4>Continuar</h4>
+                            </button>
+                        </div>
+
+                        {{ form_end(form) }}
+                    </form>
+                {%  elseif step == 2 %}
+                <h3><b>Paso 2</b> : Evidencias : <small>Fotos / Videos / Notas </small> </h3>
+
+                <form class="form-horizontal" method="POST" novalidate>
+                    <div class="form-group">
+                        <h4>Imagenes</h4>
+                        <input type="file" disabled>
+                    </div>
+                    <div class="form-group">
+                        <h4>Videos</h4>
+                        <input type="file" disabled>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-group btn-group-justified btn-primary">
+                            <h4>Publicar</h4>
+                        </button>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

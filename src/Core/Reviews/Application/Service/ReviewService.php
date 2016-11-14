@@ -37,17 +37,13 @@ class ReviewService
      */
     public function addReview(AddReviewInput $data)
     {
-        $company = $this->companyRepository->find($data->companyId());
-
-        if (null === $company) {
-            throw new InvalidArgumentException('La empresa no existe o no es correcta');
-        }
-
         $author = $this->userRepository->find($data->authorId());
 
         if (null == $author) {
             throw new InvalidArgumentException('El usuario no existe o no es correcto');
         }
+
+        $company = $this->findCompany($data->companyId());
 
         $review = new Review(
             $data->title(),
@@ -56,7 +52,7 @@ class ReviewService
             $company
         );
 
-        $review->setCompanyName($data->companyName() ??  $company->getName());
+        $review->setCompanyName($company->isOther() ? $data->companyName() : $company->getName());
 
         $this->reviewRepository->save($review);
 
@@ -69,6 +65,24 @@ class ReviewService
     public function listReviewsByAuthor($authorId, $limit = 10, $page = 1, $order = [])
     {
         return $this->reviewRepository->findByAuthor($authorId);
+    }
+
+    private function findCompany($companyId)
+    {
+        switch (true) {
+            case isset($company) :
+                $company = $this->companyRepository->find($companyId);
+                break;
+            default:
+                $company = $this->companyRepository->getOtherCompany();
+                break;
+        }
+
+        if (null === $company) {
+            throw new InvalidArgumentException('La empresa no existe o no es correcta');
+        }
+
+        return $company;
     }
 
 }

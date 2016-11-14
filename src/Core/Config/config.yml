@@ -4,6 +4,10 @@ parameters:
 services:
 
     ## Services
+    review.service:
+      class: Redforma\Reviews\Application\Service\ReviewService
+      arguments: ['@review.repository', '@company.repository', '@user.repository']
+
     company.service:
       class: Redforma\Reviews\Application\Service\CompanyService
       arguments: ['@company.repository', '@company.category.repository']
@@ -28,6 +32,9 @@ services:
         class: Redforma\Identity\Infrastructure\Persistence\Doctrine\DoctrineRoleRepository
         arguments: [Redforma\Identity\Domain\Model\User\Role, '@doctrine.orm.entity_manager']
 
+    review.repository:
+        class: Redforma\Reviews\Infrastructure\Persistence\Doctrine\DoctrineReviewRepository
+        arguments: [Redforma\Reviews\Domain\Model\Review\Review, '@doctrine.orm.entity_manager']
     company.repository:
         class: Redforma\Reviews\Infrastructure\Persistence\Doctrine\DoctrineCompanyRepository
         arguments: [Redforma\Reviews\Domain\Model\Company\Company, '@doctrine.orm.entity_manager']

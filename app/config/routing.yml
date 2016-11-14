@@ -5,3 +5,8 @@ app:
 app_config:
     resource: "@AppBundle/Resources/config/routes.yml"
     type: ~
+
+api:
+    resource: "@ApiBundle/Controller"
+    type:     annotation
+    prefix: /api

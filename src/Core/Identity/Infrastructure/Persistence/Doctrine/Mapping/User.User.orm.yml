@@ -5,6 +5,10 @@ Redforma\Identity\Domain\Model\User\User:
         fk_user_role:
             columns:
                 - role_id
+    uniqueConstraints:
+        UNIQ_2EA2A374BF396750:
+            columns:
+                - id
     id:
         id:
             type: integer

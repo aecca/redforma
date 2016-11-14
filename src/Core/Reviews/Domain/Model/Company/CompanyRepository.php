@@ -51,4 +51,19 @@ interface CompanyRepository
      * @return Company[]
      */
     public function allFeatured($limit);
+
+    /**
+     * Obtener la empresa 'Otra'
+     *
+     * @return Company
+     */
+    public function getOtherCompany();
+
+    /**
+     * Buscar empresas por nombre
+     * 
+     * @param $name
+     * @return array
+     */
+    public function searchByName($name);
 }

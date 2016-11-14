@@ -29,6 +29,25 @@ class CompanyService
         return $this->companyRepository->all($limit, $page);
     }
 
+    public function searchByName($name, $limit, $page = 1)
+    {
+        $data =  $this->companyRepository->searchByName($name);
+        $result = [];
+
+        foreach ($data as $item) {
+           $result[] = [
+               'id'         => $item['id'],
+               'name'       => $item['name'],
+               'slug'       => $item['slug'],
+               'categories' => $item['categories'],
+               'num_favs'   => $item['numFavs'],
+               'num_reviews'=> $item['numReviews']
+           ];
+        }
+
+        return $result;
+    }
+
     /**
      * @param $limit
      * @return Category[]

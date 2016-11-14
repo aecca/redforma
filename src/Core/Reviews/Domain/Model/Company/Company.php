@@ -16,8 +16,8 @@ use Redforma\Identity\Domain\Model\User\User;
  */
 class Company extends Entity
 {
-    const EMPTY_CATEGORIES = 'Sin Categorias';
-    const OTHER_COMPANY = 1;
+    const EMPTY_CATEGORIES   = 'Sin Categorias';
+    const OTHER_COMPANY_NAME = 'Other';
 
     protected $creator;
     protected $name;
@@ -102,6 +102,11 @@ class Company extends Entity
     public function getNumReviews()
     {
         return $this->numReviews;
+    }
+
+    public function isOther(): bool
+    {
+        return $this->name == static::OTHER_COMPANY_NAME;
     }
 
 }

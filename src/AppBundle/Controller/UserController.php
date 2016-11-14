@@ -42,7 +42,7 @@ class UserController extends Controller
         $redirectUrl = $request->get('redirect_url', false);
 
         if ($redirectUrl) {
-            $this->get('session')->set('redirect_url', $redirectUrl);
+            $request->getSession()->set('redirect_url', $redirectUrl);
         }
 
         $form = $this->createForm(UserLoginType::class);
@@ -65,6 +65,7 @@ class UserController extends Controller
 
         } catch (Exception $ex) {
             $form->addError(new FormError($ex->getMessage()));
+            $this->get('logger')->error($ex->getMessage(), $ex->getTrace());
         }
 
         return $this->render(':reviews/user:login.html.twig', [
@@ -96,7 +97,7 @@ class UserController extends Controller
                 $user = $this->userService()->register($form->getData());
                 $this->userService()->authenticate($user);
 
-                return $this->redirectUrl('homepage');
+                return $this->redirectUrl($request, 'homepage');
             }
 
         } catch (Exception $ex) {
@@ -108,9 +109,9 @@ class UserController extends Controller
         ]);
     }
 
-    private function redirectUrl($url)
+    private function redirectUrl(Request $request, $url)
     {
-        $sessionRedirectUrl = $this->get('session')->get('redirect_url', false);
+        $sessionRedirectUrl = $request->getSession()->get('redirect_url', false);
 
         if ($sessionRedirectUrl) {
             /**
@@ -118,7 +119,7 @@ class UserController extends Controller
              * se procede a eliminarla de la session. para evitar
              * problemas cuando se realizen multiples inicios de sesion.
              */
-            $this->get('session')->remove('redirect_url');
+            $request->getSession()->remove('redirect_url');
 
             return $this->redirect($sessionRedirectUrl);
         } else {

@@ -17,6 +17,10 @@ use Redforma\Reviews\Domain\Model\Company\Company;
  */
 class Review extends Entity
 {
+    const STATE_CREATED = 0;
+    const STATE_ACTIVE  = 2;
+    const STATE_DELETED = 3;
+
     protected $title;
     protected $slug;
     protected $author;
@@ -28,6 +32,7 @@ class Review extends Entity
     protected $numStats = 0;
     protected $createdAt;
     protected $updatedAt;
+    protected $publishedAt;
     protected $state;
 
     public function __construct(String $title, String $description, User $author, Company $company)
@@ -37,8 +42,15 @@ class Review extends Entity
         $this->description = $description;
         $this->author = $author;
         $this->company = $company;
-        $this->createdAt = new DateTime();
+        $this->createdAt  = new DateTime();
         $this->updatedAt  = new DateTime();
+
+        /**
+         * Por defecto cada review mantendra este estado, hasta
+         * que el usuario desee publicarla. entonces pasara
+         * a estado STATE_ACTIVE.
+         */
+        $this->state = static::STATE_CREATED;
     }
 
     /**
@@ -92,6 +104,12 @@ class Review extends Entity
     public function setCompanyName($companyName)
     {
         $this->companyName = $companyName;
+    }
+
+    public function active()
+    {
+        $this->state = static::STATE_ACTIVE;
+        $this->publishedAt = new DateTime();
     }
 
 }

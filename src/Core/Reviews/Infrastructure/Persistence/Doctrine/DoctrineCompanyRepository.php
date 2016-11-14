@@ -3,6 +3,7 @@
 namespace Redforma\Reviews\Infrastructure\Persistence\Doctrine;
 
 use Redforma\Common\Adapter\Persistence\Doctrine\DoctrineRepository;
+use Redforma\Reviews\Domain\Model\Company\Company;
 use Redforma\Reviews\Domain\Model\Company\CompanyRepository;
 
 /**
@@ -78,5 +79,29 @@ class DoctrineCompanyRepository extends DoctrineRepository  implements CompanyRe
 
         return $qbd->getResult();
 
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOtherCompany()
+    {
+        return $this->findByName(Company::OTHER_COMPANY_NAME);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function searchByName($name)
+    {
+        $qdb = $this->repository->createQueryBuilder('c')
+            ->select('c, cat')
+            ->leftJoin('c.categories', 'cat')
+            ->where('c.name LIKE :name')
+            ->andWhere('c.name <> :excludeName')
+            ->setParameter('name', "%$name%")
+            ->setParameter('excludeName', Company::OTHER_COMPANY_NAME);
+
+        return $qdb->getQuery()->getArrayResult();
     }
 }
